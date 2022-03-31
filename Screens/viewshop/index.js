@@ -4,7 +4,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import Product from '../product'
 
 
-export default class Home extends React.Component {
+export default class ViewShop extends React.Component {
     render(){
         return (
             <View style={styles.container}>

@@ -22,8 +22,9 @@ export default class Search extends React.Component {
                 mode="dropdown">
                 <Picker.Item label="Current Location" value='' />
 
-                <Picker.Item label="Pakistan" value={1} />
-                <Picker.Item label="India" value={0} />
+                <Picker.Item label="Riga" value={'Riga'} />
+                <Picker.Item label="Jelgava" value={'Jelgava'} />
+                <Picker.Item label="Liepāja " value={'Liepāja'} />
                 </Picker>
 
                 </View>
@@ -43,8 +44,9 @@ export default class Search extends React.Component {
                 mode="dropdown">
                 <Picker.Item label="Desired Location" value='' />
 
-                <Picker.Item label="Pakistan" value={1} />
-                <Picker.Item label="India" value={0} />
+                <Picker.Item label="Riga" value={'Riga'} />
+                <Picker.Item label="Jelgava" value={'Jelgava'} />
+                <Picker.Item label="Liepāja " value={'Liepāja'} />
                 </Picker>
 
                 </View>

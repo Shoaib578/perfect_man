@@ -89,19 +89,7 @@ export default class Signin extends React.Component {
 
 
                     
-                    <View style={{ flexDirection: 'row',
-                            borderWidth:1,borderColor:"#DBDBDB",
-                            color:"#BB952D",
-
-                            borderRadius:55,height:45,width:Dimensions.get('window').width*2/2.5,marginTop:20,alignSelf: 'center',backgroundColor:'white',
-                        
-                            }}>
-
-                    <Feather name="phone" color="black" size={25}  style={styles.imageStyle}/>
-                    <TextInput 
-                    placeholder="Phone Number" placeholderTextColor="black" style={{flex:1,color:'black'}}/>
-                    </View>
-
+                 
 
 
 

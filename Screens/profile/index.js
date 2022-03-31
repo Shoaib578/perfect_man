@@ -10,17 +10,20 @@ export default class Profile extends React.Component {
         return(
            
             <View style={styles.container}>
-                <Image source={require('../../Assets/images/avatar.png')}  style={{position:'absolute',top:'7%',zIndex:2,width:110,height:110}}/>
                 
                 <View style={styles.innerContainer}>
 
                 <ScrollView>
+                 
+                <Image source={require('../../Assets/images/avatar.png')}  style={{width:110,height:110,alignSelf:'center',}}/>
+
+               
 
                  <View style={{ flexDirection: 'row',
                             borderWidth:1,borderColor:"#DBDBDB",
                             color:"#BB952D",
 
-                            borderRadius:55,height:45,width:Dimensions.get('window').width*2/2.5,marginTop:100,alignSelf: 'center',backgroundColor:'white',
+                            borderRadius:55,height:45,width:Dimensions.get('window').width*2/2.5,marginTop:50,alignSelf: 'center',backgroundColor:'white',
                         
                             }}>
 

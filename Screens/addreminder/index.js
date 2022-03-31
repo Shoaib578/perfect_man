@@ -7,7 +7,6 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Reminders from "@wiicamp/react-native-reminders";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import 'react-native-get-random-values';
-import RNCalendarReminders from 'react-native-calendar-reminders';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -62,14 +61,15 @@ export default class AddReminder extends React.Component {
         }
 
         setReminder = ()=>{
-          
-
+            let timestamp = new Date(this.state.time)
+            let date = timestamp.setDate(timestamp.getDate()+this.state.date.getDate())
+           
             Reminders.addReminder({
                 id:uuidv4(),
                 
                 title: this.state.reminderTitle,
                 note: this.state.reminderText,
-                timestamp:new Date(this.state.time).valueOf(), // next five minutes from current time (milliseconds)
+                timestamp:new Date(date).valueOf(), // next five minutes from current time (milliseconds)
               }).then(res=>{
                   Alert.alert("Your Reminder Has Been Added")
                   this.setState({time:'',reminderText:'',reminderTitle:''})

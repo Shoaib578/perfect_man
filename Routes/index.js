@@ -8,7 +8,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Entypo from 'react-native-vector-icons/Entypo'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
-import Home from '../Screens/home';
+import Home from '../Screens/viewshop';
 import Search from '../Screens/search';
 import Profile from '../Screens/profile';
 import Shops from '../Screens/shops';
@@ -18,6 +18,8 @@ import Signin from '../Screens/auth/signin';
 import {createDrawerNavigator, } from '@react-navigation/drawer';
 import AddReminder from '../Screens/addreminder';
 import DailyReminders from '../Screens/daily_reminders';
+import ViewShop from '../Screens/viewshop';
+import Intro from '../Screens/intro';
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator();
@@ -40,8 +42,8 @@ function getWidth() {
     <Stack.Navigator initialRouteName="splashscreen" screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}}>
     <Stack.Screen name='splashscreen' component={SplashNavigator} options={{headerShown:false}}/>
     <Stack.Screen name='auth' component={AuthNavigator} options={{headerShown:false}}/>
-    {/* <Stack.Screen name='home' component={HomeNavigator} options={{headerShown:false}}/> */}
-    <Stack.Screen name='home' component={DrawerNavigator} options={{headerShown:false}}/>
+    <Stack.Screen name='home' component={HomeNavigator} options={{headerShown:false}}/>
+    {/* <Stack.Screen name='home' component={DrawerNavigator} options={{headerShown:false}}/> */}
 
     </Stack.Navigator>
     )
@@ -55,7 +57,7 @@ function getWidth() {
     
 
     const headerLeft = (navigation)=>(
-        <TouchableOpacity onPress={()=>navigation.openDrawer()} style={{backgroundColor:'#57b5b6',borderColor:'#57b5b6',borderWidth:1,borderRadius:10,left:'10%',padding:6,marginTop:5}}>
+        <TouchableOpacity  style={{backgroundColor:'#57b5b6',borderColor:'#57b5b6',borderWidth:1,borderRadius:10,left:'10%',padding:6,marginTop:5}}>
             <FontAwesome5 name="list" color="white" size={33}/>
         </TouchableOpacity>
     )
@@ -76,6 +78,8 @@ function getWidth() {
         return(
             <Stack.Navigator initialRouteName="Shops" >
                 <Stack.Screen name="Shops" component={Shops} options={{headerRight:()=>headerRight(),headerTransparent:true,headerLeft:()=>headerLeft(navigation),}}/>
+                <Stack.Screen name="ViewShop" component={ViewShop} options={{headerRight:()=>headerRight(),headerTransparent:true,headerLeft:()=>headerLeft(navigation),}}/>
+
             </Stack.Navigator>
         )
     }
@@ -109,33 +113,26 @@ function getWidth() {
 
 
 
-    const DrawerNavigator = ({navigation})=>{
-        return(
+    // const DrawerNavigator = ({navigation})=>{
+    //     return(
           
-        <Drawer.Navigator initialRouteName="Home">
-            <Drawer.Screen name="DrawerHome" component={HomeNavigator} options={{headerShown:false,drawerLabel:'Home'}}/>
-            <Drawer.Screen name="set_reminder" component={AddReminderDrawer} options={{headerShown:false,drawerLabel:'Set Reminder'}}/>
-            <Drawer.Screen name="daily_reminders" component={DailyReminderDrawer} options={{headerShown:false,drawerLabel:'Daily Reminders'}}/>
+    //     <Drawer.Navigator initialRouteName="Home">
+    //         <Drawer.Screen name="DrawerHome" component={HomeNavigator} options={{headerShown:false,drawerLabel:'Home'}}/>
+    //         <Drawer.Screen name="set_reminder" component={AddReminderDrawer} options={{headerShown:false,drawerLabel:'Set Reminder'}}/>
+    //         <Drawer.Screen name="daily_reminders" component={DailyReminderDrawer} options={{headerShown:false,drawerLabel:'Daily Reminders'}}/>
             
-        </Drawer.Navigator>
+    //     </Drawer.Navigator>
      
-        )
-    }
+    //     )
+    // }
 
 
-    const AddReminderDrawer = ({navigation})=>(
-        <Stack.Navigator initialRouteName="Add Reminder">
-      
-      <Stack.Screen name="Set Reminder" component={AddReminder} options={{headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),}}/>
-      
-      </Stack.Navigator>
-    )
-        
     
-    const DailyReminderDrawer = ({navigation})=>(
+    const DailyReminderStack = ({navigation})=>(
         <Stack.Navigator initialRouteName="Add Reminder">
       
       <Stack.Screen name="Daily Reminders" component={DailyReminders} options={{headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),}}/>
+      <Stack.Screen name="Set Reminder" component={AddReminder} options={{headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),}}/>
       
       </Stack.Navigator>
     )
@@ -172,7 +169,7 @@ function getWidth() {
                  <FontAwesome5
                      name="search"
                      size={22}
-                     color={focused ? '#57b5b6' : 'white'}
+                     color={focused ? '#639beb' : 'white'}
                  ></FontAwesome5>
                  </View>
              )
@@ -204,7 +201,7 @@ function getWidth() {
                  <FontAwesome5
                      name="user"
                      size={22}
-                     color={focused ? '#57b5b6' : 'white'}
+                     color={focused ? '#639beb' : 'white'}
                  ></FontAwesome5>
                  </View>
              )
@@ -219,12 +216,13 @@ function getWidth() {
              })}/>
  
          
-         <Tab.Screen name="Home" component={HomeStack}  options={{
+         <Tab.Screen name="Home" component={DailyReminderStack}  options={{
         tabBarInactiveTintColor:'white',
 
                      headerTransparent:false,
                     headerShown:false,
                      headerTintColor:"#57b5b6",
+                     
                      tabBarLabel:' ',
                      
                      tabBarIcon: ({ focused }) => (
@@ -232,7 +230,7 @@ function getWidth() {
                          <View style={{
                              width: 70,
                              height: 70,
-                             backgroundColor: focused ? '#57b5b6' : 'gray',
+                             backgroundColor: focused ? '#639beb' : 'gray',
                              borderRadius: 70,
                              justifyContent: 'center',
                              alignItems: 'center',
@@ -265,7 +263,7 @@ function getWidth() {
                  <Entypo
                      name="shop"
                      size={22}
-                     color={focused ? '#57b5b6' : 'white'}
+                     color={focused ? '#639beb' : 'white'}
                  ></Entypo>
                  </View>
              )
@@ -296,7 +294,7 @@ function getWidth() {
                  <FontAwesome5
                      name="shopping-cart"
                      size={22}
-                     color={focused ? '#57b5b6' : 'white'}
+                     color={focused ? '#639beb' : 'white'}
                  ></FontAwesome5>
                  </View>
              )
@@ -321,7 +319,9 @@ function getWidth() {
 
 
      const AuthNavigator = ()=>(
-        <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="signin">
+        <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} >
+            <Stack.Screen name='intro' options={{headerShown:false}} component={Intro}/>
+            
             <Stack.Screen name='signin' options={{headerTransparent:true,headerTitle:' ',headerTintColor:'white'}} component={Signin}/>
          
 

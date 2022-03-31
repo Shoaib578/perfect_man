@@ -4,6 +4,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Reminders from "@wiicamp/react-native-reminders";
+import CalendarPicker from 'react-native-calendar-picker';
 
 export default class DailyReminders extends React.Component {
     state = {
@@ -43,9 +44,21 @@ export default class DailyReminders extends React.Component {
 
         return(
             <View style={styles.container}>
-                
+              
             <View style={styles.innerContainer}>
+          
             <ScrollView >
+
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Set Reminder')} style={{marginLeft:'80%',top:10}}>
+                <FontAwesome name="calendar-plus-o" color="white" size={25}/>
+                </TouchableOpacity>
+            <View style={{backgroundColor:'white',flex:1,marginTop:60,alignSelf: 'center'}}>
+            <CalendarPicker
+            
+            />
+           
+
+        </View>
             <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'white',marginTop:20}}>Upcomming Events</Text>
 
             {this.state.reminders.map((data,index)=>{

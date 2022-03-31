@@ -28,7 +28,7 @@ export default class Splash extends React.Component {
         }else{
             this.props.navigation.reset({
                 index: 0,
-                routes: [{ name: 'auth',screen:'signin' }]
+                routes: [{ name: 'auth',screen:'intro' }]
             });
         }
         },1000)

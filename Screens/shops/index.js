@@ -1,11 +1,16 @@
 import React from 'react'
-import {View,Text,StyleSheet,Image,Dimensions} from 'react-native'
+import {View,Text,StyleSheet,Image,Dimensions,ActivityIndicator} from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import {Picker} from '@react-native-picker/picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Shop from './shop';
 export default class Shops extends React.Component {
+    state = {
+        isLoading:false
+    }
     render(){
+        if(this.state.isLoading == false){
+
         return(
            
             <View style={styles.container}>
@@ -17,18 +22,27 @@ export default class Shops extends React.Component {
                 <Ionicons name="location-outline" color="black" size={20} style={styles.phoneImageStyle}/>
                 <Picker         
                 style={{color:'black',flex:1}}
+                onValueChange={(val)=>{
+                    this.setState({isLoading:true},()=>{
+                        setTimeout(()=>{
+                            this.setState({isLoading:false})
+                        },500)
+                    })
+                }}
                 mode="dropdown">
                 <Picker.Item label="Desired Location" value='' />
 
-                <Picker.Item label="Pakistan" value={1} />
-                <Picker.Item label="India" value={0} />
+                <Picker.Item label="Riga" value={'Riga'} />
+                <Picker.Item label="Jelgava" value={'Jelgava'} />
+                <Picker.Item label="Liepāja " value={'Liepāja'} />
+
                  </Picker>
 
                  </View>
 
 
                 {/* Desire Location end*/}
-
+                <ScrollView>
 
                 <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'white',marginTop:20}}>Nearby Resturants</Text>
 
@@ -36,14 +50,37 @@ export default class Shops extends React.Component {
                    
 
 
-                   <Shop />
+                   <Shop data={{
+                       "image":require("../../Assets/images/burger_store.jpg"),
+                       "title":"Burger Shop"
+                   }} />
 
 
-                   <Shop />
-                   <Shop />
-                   <Shop />
-                   <Shop />
-                   <Shop />
+                <Shop data={{
+                       "image":require("../../Assets/images/chips_shop.png"),
+                       "title":"Chips Shop"
+                   }} />
+
+                <Shop data={{
+                       "image":require("../../Assets/images/chips_shop.png"),
+                       "title":"Chips Shop"
+                   }} />
+
+                <Shop data={{
+                       "image":require("../../Assets/images/burger_store.jpg"),
+                       "title":"Burger Shop"
+                   }} />
+
+                 <Shop data={{
+                       "image":require("../../Assets/images/chips_shop.png"),
+                       "title":"Chips Shop"
+                   }} />
+
+                    <Shop data={{
+                       "image":require("../../Assets/images/burger_store.jpg"),
+                       "title":"Burger Shop"
+                   }} />
+
 
 
                 </ScrollView>
@@ -57,25 +94,94 @@ export default class Shops extends React.Component {
                     
 
 
-                    <Shop />
+                    <Shop data={{
+                       "image":require("../../Assets/images/gift_shop.jpg"),
+                       "title":"Gift Shop"
+                   }} />
 
-
-                    <Shop />
-                    <Shop />
-                    <Shop />
-                    <Shop />
-                    <Shop />
+                    <Shop data={{
+                       "image":require("../../Assets/images/gift_shop2.png"),
+                       "title":"Buy Gift Shop"
+                   }} />
+                       <Shop data={{
+                       "image":require("../../Assets/images/gift_shop.jpg"),
+                       "title":"Gifts  Shop"
+                   }} />
+                       <Shop data={{
+                       "image":require("../../Assets/images/gift_shop2.png"),
+                       "title":"Amazing Gifts Shop"
+                   }} />
+                        <Shop data={{
+                       "image":require("../../Assets/images/burger_store.jpg"),
+                       "title":"Amazing Gifts Shop"
+                   }} />
+                       <Shop data={{
+                       "image":require("../../Assets/images/gift_shop2.png"),
+                       "title":"Amazing Gifts Shop"
+                   }} />
 
 
                     </ScrollView>
 
+
+                    <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'white',marginTop:30}}>Nearby GiftShops</Text>
+
+                    <ScrollView style={{marginTop:20}} horizontal={true}>
+
+
+
+                    <Shop data={{
+                       "image":require("../../Assets/images/gift_shop.jpg"),
+                       "title":"Gift Shop"
+                   }} />
+
+                    <Shop data={{
+                       "image":require("../../Assets/images/gift_shop2.png"),
+                       "title":"Buy Gift Shop"
+                   }} />
+                       <Shop data={{
+                       "image":require("../../Assets/images/gift_shop.jpg"),
+                       "title":"Gifts  Shop"
+                   }} />
+                       <Shop data={{
+                       "image":require("../../Assets/images/gift_shop2.png"),
+                       "title":"Amazing Gifts Shop"
+                   }} />
+                        <Shop data={{
+                       "image":require("../../Assets/images/burger_store.jpg"),
+                       "title":"Amazing Gifts Shop"
+                   }} />
+                       <Shop data={{
+                       "image":require("../../Assets/images/gift_shop2.png"),
+                       "title":"Amazing Gifts Shop"
+                   }} />
+
+
                     </ScrollView>
 
 
-                </View>
+
+
+                    </ScrollView>
+
+
+
+                <View style={{marginTop:150}}></View>
+                </ScrollView>
+                    </View>
 
             </View>
         )
+    }else{
+        return  <View style={styles.container}>
+                
+        <View style={styles.innerContainer}>
+         <ActivityIndicator color="white" size="large" style={{ alignSelf: "center" ,marginTop:30}}/>
+         </View>
+         </View>
+
+    }
+
     }
 }
 
