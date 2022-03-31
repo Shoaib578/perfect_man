@@ -50,33 +50,33 @@ export default class Shops extends React.Component {
                    
 
 
-                   <Shop data={{
+                   <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/burger_store.jpg"),
                        "title":"Burger Shop"
                    }} />
 
 
-                <Shop data={{
+                <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/chips_shop.png"),
                        "title":"Chips Shop"
                    }} />
 
-                <Shop data={{
+                <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/chips_shop.png"),
                        "title":"Chips Shop"
                    }} />
 
-                <Shop data={{
+                <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/burger_store.jpg"),
                        "title":"Burger Shop"
                    }} />
 
-                 <Shop data={{
+                 <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/chips_shop.png"),
                        "title":"Chips Shop"
                    }} />
 
-                    <Shop data={{
+                    <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/burger_store.jpg"),
                        "title":"Burger Shop"
                    }} />
@@ -94,28 +94,28 @@ export default class Shops extends React.Component {
                     
 
 
-                    <Shop data={{
+                    <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop.jpg"),
                        "title":"Gift Shop"
                    }} />
 
-                    <Shop data={{
+                    <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop2.png"),
                        "title":"Buy Gift Shop"
                    }} />
-                       <Shop data={{
+                       <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop.jpg"),
                        "title":"Gifts  Shop"
                    }} />
-                       <Shop data={{
+                       <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop2.png"),
                        "title":"Amazing Gifts Shop"
                    }} />
-                        <Shop data={{
+                        <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/burger_store.jpg"),
                        "title":"Amazing Gifts Shop"
                    }} />
-                       <Shop data={{
+                       <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop2.png"),
                        "title":"Amazing Gifts Shop"
                    }} />
@@ -130,28 +130,28 @@ export default class Shops extends React.Component {
 
 
 
-                    <Shop data={{
+                    <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop.jpg"),
                        "title":"Gift Shop"
                    }} />
 
-                    <Shop data={{
+                    <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop2.png"),
                        "title":"Buy Gift Shop"
                    }} />
-                       <Shop data={{
+                       <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop.jpg"),
                        "title":"Gifts  Shop"
                    }} />
-                       <Shop data={{
+                       <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop2.png"),
                        "title":"Amazing Gifts Shop"
                    }} />
-                        <Shop data={{
+                        <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/burger_store.jpg"),
                        "title":"Amazing Gifts Shop"
                    }} />
-                       <Shop data={{
+                       <Shop navigation={this.props.navigation} data={{
                        "image":require("../../Assets/images/gift_shop2.png"),
                        "title":"Amazing Gifts Shop"
                    }} />

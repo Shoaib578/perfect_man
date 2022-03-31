@@ -42,8 +42,8 @@ function getWidth() {
     <Stack.Navigator initialRouteName="splashscreen" screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}}>
     <Stack.Screen name='splashscreen' component={SplashNavigator} options={{headerShown:false}}/>
     <Stack.Screen name='auth' component={AuthNavigator} options={{headerShown:false}}/>
-    <Stack.Screen name='home' component={HomeNavigator} options={{headerShown:false}}/>
-    {/* <Stack.Screen name='home' component={DrawerNavigator} options={{headerShown:false}}/> */}
+    {/* <Stack.Screen name='home' component={HomeNavigator} options={{headerShown:false}}/> */}
+    <Stack.Screen name='home' component={DrawerNavigator} options={{headerShown:false}}/>
 
     </Stack.Navigator>
     )
@@ -57,7 +57,7 @@ function getWidth() {
     
 
     const headerLeft = (navigation)=>(
-        <TouchableOpacity  style={{backgroundColor:'#57b5b6',borderColor:'#57b5b6',borderWidth:1,borderRadius:10,left:'10%',padding:6,marginTop:5}}>
+        <TouchableOpacity onPress={()=>navigation.toggleDrawer()} style={{backgroundColor:'#57b5b6',borderColor:'#57b5b6',borderWidth:1,borderRadius:10,left:'10%',padding:6,marginTop:5}}>
             <FontAwesome5 name="list" color="white" size={33}/>
         </TouchableOpacity>
     )
@@ -76,9 +76,9 @@ function getWidth() {
 
     const ShopStack = ({navigation})=>{
         return(
-            <Stack.Navigator initialRouteName="Shops" >
+            <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="Shops" >
                 <Stack.Screen name="Shops" component={Shops} options={{headerRight:()=>headerRight(),headerTransparent:true,headerLeft:()=>headerLeft(navigation),}}/>
-                <Stack.Screen name="ViewShop" component={ViewShop} options={{headerRight:()=>headerRight(),headerTransparent:true,headerLeft:()=>headerLeft(navigation),}}/>
+                <Stack.Screen name="ViewShop" component={ViewShop} options={{headerRight:()=>headerRight(),headerTransparent:true,headerLeft:()=>headerLeft(navigation),headerTitle:"Cute Things"}}/>
 
             </Stack.Navigator>
         )
@@ -86,7 +86,7 @@ function getWidth() {
 
     const SearchStack = ({navigation})=>{
         return(
-            <Stack.Navigator initialRouteName="Search" >
+            <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="Search" >
             <Stack.Screen name="Search" component={Search} options={{headerRight:()=>headerRight(),headerTransparent:true,headerLeft:()=>headerLeft(navigation),}}/>
         </Stack.Navigator>
         )
@@ -96,7 +96,7 @@ function getWidth() {
 
     const ProfileStack = ({navigation})=>{
         return(
-            <Stack.Navigator initialRouteName="Profile" >
+            <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="Profile" >
             <Stack.Screen name="Profile" component={Profile} options={{headerRight:()=>headerRight(),headerTransparent:true,headerLeft:()=>headerLeft(navigation),}}/>
         </Stack.Navigator>
         )
@@ -105,7 +105,7 @@ function getWidth() {
 
     const OrdersStack = ({navigation})=>{
         return(
-            <Stack.Navigator initialRouteName="Orders" >
+            <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="Orders" >
             <Stack.Screen name="Orders" component={Orders} options={{headerRight:()=>headerRight(),headerTransparent:true,headerLeft:()=>headerLeft(navigation),}}/>
         </Stack.Navigator>
         )
@@ -113,23 +113,30 @@ function getWidth() {
 
 
 
-    // const DrawerNavigator = ({navigation})=>{
-    //     return(
+    const DrawerNavigator = ({navigation})=>{
+        return(
           
-    //     <Drawer.Navigator initialRouteName="Home">
-    //         <Drawer.Screen name="DrawerHome" component={HomeNavigator} options={{headerShown:false,drawerLabel:'Home'}}/>
-    //         <Drawer.Screen name="set_reminder" component={AddReminderDrawer} options={{headerShown:false,drawerLabel:'Set Reminder'}}/>
-    //         <Drawer.Screen name="daily_reminders" component={DailyReminderDrawer} options={{headerShown:false,drawerLabel:'Daily Reminders'}}/>
+        <Drawer.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="Home">
+            <Drawer.Screen name="DrawerHome" component={HomeNavigator} options={{headerShown:false,drawerLabel:'Home'}}/>
+            <Drawer.Screen name="daily_reminder" component={DailyReminderStack} options={{headerShown:false,headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),drawerLabel:'Daily reminder'}}/>
+            <Drawer.Screen name="set_reminder" component={DrawerReminderStack} options={{headerShown:false,headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),drawerLabel:'Set Reminder'}}/>
             
-    //     </Drawer.Navigator>
+        </Drawer.Navigator>
      
-    //     )
-    // }
+        )
+    }
 
-
+    const DrawerReminderStack = ({navigation})=>(
+        <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="Set Reminder">
+      <Stack.Screen name="Set Reminder" component={AddReminder} options={{headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),}}/>
+      
+      <Stack.Screen name="Daily Reminders" component={DailyReminders} options={{headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),}}/>
+      
+      </Stack.Navigator>
+    )
     
     const DailyReminderStack = ({navigation})=>(
-        <Stack.Navigator initialRouteName="Add Reminder">
+        <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="Daily Reminders">
       
       <Stack.Screen name="Daily Reminders" component={DailyReminders} options={{headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),}}/>
       <Stack.Screen name="Set Reminder" component={AddReminder} options={{headerTransparent:true,headerRight:()=>headerRight(),headerLeft:()=>headerLeft(navigation),}}/>
@@ -143,7 +150,7 @@ function getWidth() {
      const tabOffsetValue = useRef(new Animated.Value(0)).current;
      return(
   
-     <Tab.Navigator  tabBarOptions={{
+     <Tab.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}}  tabBarOptions={{
         
         keyboardHidesTabBar: true,
        
@@ -319,7 +326,7 @@ function getWidth() {
 
 
      const AuthNavigator = ()=>(
-        <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} >
+        <Stack.Navigator  screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} >
             <Stack.Screen name='intro' options={{headerShown:false}} component={Intro}/>
             
             <Stack.Screen name='signin' options={{headerTransparent:true,headerTitle:' ',headerTintColor:'white'}} component={Signin}/>
@@ -336,7 +343,7 @@ function getWidth() {
 
 
     const SplashNavigator = ()=>(
-        <Stack.Navigator initialRouteName="splash" >
+        <Stack.Navigator screenOptions={{gestureEnabled:true,gestureDirection:'horizontal', cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS,}} initialRouteName="splash" >
             <Stack.Screen name='splash' component={Splash} options={{headerShown:false}}/>
 
         </Stack.Navigator>

@@ -27,7 +27,11 @@ export default class DailyReminders extends React.Component {
     }
      componentDidMount(){
       this.getReminders()
-     }
+        this.props.navigation.addListener("focus",()=>{
+            this.setState({isLoading:true})
+            this.getReminders()
+        })
+    }
 
      deleteReminder = (id)=>{
          console.log(id)
@@ -66,7 +70,7 @@ export default class DailyReminders extends React.Component {
                     <View key={index} style={{flexDirection:'row',padding:30,}}>
                         <View style={{flexDirection:'row',width:'100%'}}>
                         <Text style={{color:'white',width:'60%'}}> {data.title}</Text>
-                        <Text style={{color:'white',width:'30%'}}>{new Date(data.alarms[0].timestamp).toLocaleString()}</Text>
+                        <Text style={{color:'white',width:'30%',color:'#639beb'}}>{new Date(data.alarms[0].timestamp).toLocaleString()}</Text>
                         </View>
 
                         <View >
